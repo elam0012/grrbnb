@@ -1,0 +1,225 @@
+html {
+    box-sizing: border-box;
+    font-family: Ubuntu, serif;
+    line-height: 1.5;
+}
+
+*, *::before, *::after {
+box-sizing: inherit;
+}
+
+:root {
+    --main-color: hsl(358, 70%, 50%);
+    --second-color: hsl(29, 93%, 57%);
+    --second-color-alpha: hsla(29, 93%, 57%, 0.1);
+    --third-color: hsl(103, 95%, 35%);
+}
+
+img {
+    max-width: 100%;
+}
+
+main {
+    border: 0.125rem solid #ddd;
+    box-shadow: 3px 3px 5px #ccc;
+}
+
+header {
+    background-image:  url(../img/karsten-winegeart-ewfHXBcuFA0-unsplash.jpg); /* img source: https://unsplash.com/photos/ewfHXBcuFA0 */
+    background-size: cover;
+    background-position:center;
+    display: flex;
+    height: 15rem;
+}
+
+header img {
+    height: 4.5rem;
+    margin: 1rem;
+}
+
+header h1 {
+    margin-left: auto;
+    margin-right: 1rem;
+    text-shadow: -30px 30px 30px #ddd;
+    color: white;
+    font-size: 3.5rem;
+    flex-shrink: 2;
+    margin-top: 0.5rem;
+}
+
+form {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    row-gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+label {
+    display: block;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    border: none;
+    background-color: var(--second-color-alpha);
+    box-shadow: 3px 3px 70px var(--second-color); 
+    padding: 0.3rem 1rem;
+}
+
+button {
+    background-color: var(--second-color);
+    padding: 0.5rem 1.5rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 3rem;
+    box-shadow: 3px 3px 70px var(--second-color); 
+    border: 0.125rem solid var(--third-color);
+}
+
+.price::after {
+    content: attr(data-price);
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--main-color);
+}
+
+.price {
+    box-shadow: none;
+    
+}
+
+/* ----------------------------------------------- 45em Display-------------------------------------------- */
+
+@media only screen and (min-width: 45em) {
+    header img {
+        height: 6.5rem;
+    }
+
+    form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        column-gap: 1.5rem;
+    }
+
+    .place {
+        grid-column: 1 / -1;
+    }
+
+    .search {
+        align-self: end;
+        justify-self: end;
+    }
+}
+
+/* --------------------------------------------------- 60em Display --------------------------------------------- */
+
+@media only screen and (min-width: 60em) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    header {
+        height: 100%;
+    }
+
+    header img {
+        height: 4.5rem;
+    }
+}
+
+/* --------------------------------------------------- Input Range Style --------------------------------------------- */
+
+input[type=range] {
+    width: 100%;
+    margin: 8.85px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: #33ab04;
+    border: 0.5px solid #000000;
+    border-radius: 2.6px;
+    width: 100%;
+    height: 5.3px;
+    cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+    margin-top: -9.35px;
+    width: 23px;
+    height: 23px;
+    background: #f78e2d;
+    border: 1.5px solid #000000;
+    border-radius: 24px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #3ac405;
+}
+input[type=range]::-moz-range-track {
+    background: #33ab04;
+    border: 0.5px solid #000000;
+    border-radius: 2.6px;
+    width: 100%;
+    height: 5.3px;
+    cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+    width: 23px;
+    height: 23px;
+    background: #f78e2d;
+    border: 1.5px solid #000000;
+    border-radius: 24px;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 8.85px 0;
+    color: transparent;
+    width: 100%;
+    height: 5.3px;
+    cursor: pointer;
+}
+input[type=range]::-ms-fill-lower {
+    background: #2c9203;
+    border: 0.5px solid #000000;
+    border-radius: 5.2px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #33ab04;
+    border: 0.5px solid #000000;
+    border-radius: 5.2px;
+}
+input[type=range]::-ms-thumb {
+    width: 23px;
+    height: 23px;
+    background: #f78e2d;
+    border: 1.5px solid #000000;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #33ab04;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #3ac405;
+}
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type=range] {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+}
